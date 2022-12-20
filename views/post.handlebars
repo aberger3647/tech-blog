@@ -1,0 +1,53 @@
+  <!--post-->
+  <div class="container">
+        <div class="row">
+         <div class="col-md-6">
+             <div class="card border-dark mb-3">
+               <div class="card-header">
+                 Post Title
+               </div>
+               <div class="card-body">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque sem, hendrerit ut erat quis, imperdiet finibus arcu. Maecenas a tellus nibh. Vivamus metus sapien, consequat in consequat maximus, convallis vel quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus ipsum purus, semper lobortis velit in, venenatis commodo velit. Maecenas mauris orci, eleifend eget sodales vitae, malesuada sit amet est. Mauris varius, neque id suscipit auctor, risus est venenatis mauris, ac placerat dolor nulla et nunc. Duis hendrerit commodo justo, non aliquam elit pharetra non. Donec pretium tincidunt mi.</p>
+                <p>Donec efficitur elit eget dapibus ornare. Cras ac euismod dolor. Praesent et justo odio. Nunc fringilla arcu felis, quis volutpat metus tincidunt sed. Pellentesque non elit quis sapien dictum elementum. Cras enim enim, scelerisque quis malesuada et, mollis sit amet justo. Etiam nisi massa, interdum eget felis vitae, congue malesuada velit. Nam sodales molestie ultricies. Suspendisse a ante eu urna accumsan feugiat vitae non orci. Pellentesque sit amet nisi velit. In auctor est volutpat mi ullamcorper congue.</p>
+                 <p>Morbi vestibulum dui ut arcu consectetur commodo. Pellentesque porta ullamcorper nisl in finibus. Vestibulum et nulla egestas, vulputate lorem nec, vestibulum tortor. Nullam malesuada tempus feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas tristique ipsum sit amet lacinia ultrices. Integer vel cursus quam. In sed congue libero, in cursus augue.</p>
+                <button type="button" class="btn btn-light border border-dark">Update</button>
+                 <button type="button" class="btn btn-light border border-dark">Delete</button>
+               </div>
+               <div class="card-footer"><small class="text-muted">Created {{format_date post.date_created}} by {{user.username}}</small></div>
+             </div>
+       </div>
+          </div>
+         </div>
+<!--comments-->
+         <div class="container">
+          <div class="row">
+           <div class="col-md-6">
+               <div class="card border-dark mb-3">
+                 <div class="card-header">
+                   Add A Comment
+                 </div>
+                 <div class="card-body">
+                  <form>
+                      <div class="form-group">
+                      <label for="comment-name">Name</label>
+                      <input type="text" class="form-control" id="comment-name">
+                    </div>
+                    <div class="form-group">
+                      <textarea class="form-control" id="comment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-light border border-dark">Submit</button>
+                  </form>
+                  <hr/>
+                  <h5>Comments</h5>
+                  {{#each posts as |post|}}
+                  {{> comment}}
+                  {{/each}}
+                 </div>
+               </div>
+         </div>
+            </div>
+           </div>
+
+
+
+</div>

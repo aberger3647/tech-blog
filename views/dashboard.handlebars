@@ -1,0 +1,63 @@
+{{#if loggedIn}}
+<h1>Welcome {{user.username}}</h1>
+
+<!--create post-->
+<div class="container">
+        <div class="row">
+        <div class="col-md-6">
+          <div class="card border-dark mb-3">
+                <div class="card-header">
+                  Create Post
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group post-form">
+                      <label for="post-title">{{create_title}}</label>
+                      <input type="form-input" class="form-control" id="post-title">
+                    </div>
+                    <div class="form-group">
+                      <label for="post-desc">{{create_content}}</label>
+                      <textarea class="form-control" id="post-desc"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-light border border-dark">Create</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+
+<!--existing posts-->
+{{#each posts as |post|}}
+         <div class="col-md-6">
+             <div class="card border-dark mb-3">
+               <div class="card-header">
+                 {{title}}
+               </div>
+               <div class="card-body">
+                {{content}}
+                 <button type="button" class="btn btn-light border border-dark">Update</button>
+                 <button type="button" class="btn btn-light border border-dark">Delete</button>
+               </div>
+               <div class="card-footer"><small class="text-muted">Created {{format_date post.date_created}} by {{user.username}}</small>
+              </div>
+             </div>
+       </div>
+          </div>
+         </div>
+         {{/each}}
+
+
+ {{!-- {{#if projects.length}}   
+{{#each projects as |project|}}
+  <div class="project-details">
+    <h3>{{name}}</h3>
+    <p>{{description}}</p>
+  </div>
+{{/each}}
+  </div>
+{{/if}} --}}
+
+{{else}}
+<a href="/login">You must login first to view this page</a>
+{{/if}}
+
+<script src="./js/dashboard.js"></script>

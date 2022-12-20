@@ -1,13 +1,21 @@
-{{#each posts as |post| }}
- <div class="card border-dark mb-3" style="max-width: 50rem;">
+{{#each posts as |post|}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card border-dark mb-3">
         <div class="card-header">
           Blog Post
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{post_title}}</h5>
-          <p class="card-text">{{blurb}}</p>
+          <h5 class="card-title">{{title}}</h5>
+          <p class="card-text">{{description}}</p>
           <a href="#" class="btn btn-light border border-dark">Go to post</a>
         </div>
-        <div class="card-footer"><small class="text-muted">Created {{format_date post.date}}</small></div>
+        <div class="card-footer"><small class="text-muted">Created
+            {{format_date post.date_created}}</small></div>
       </div>
+    </div>
+  </div>
+</div>
 {{/each}}
+
