@@ -2,17 +2,6 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get post by id
-router.get('/:id', async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id);
-    const post = postData.get({ plain: true });
-    res.render('post', { post });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 // create post
 router.post('/', withAuth, async (req, res) => {
@@ -27,6 +16,8 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// update post
 
 // delete post
 router.delete('/:id', withAuth, async (req, res) => {

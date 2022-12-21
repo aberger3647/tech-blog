@@ -1,5 +1,5 @@
 {{#if loggedIn}}
-<h1>Welcome {{user.username}}</h1>
+<h1>Welcome {{username}}</h1>
 
 <!--create post-->
 <div class="container">
@@ -10,13 +10,13 @@
                   Create Post
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="form-group post-form">
-                      <label for="post-title">{{create_title}}</label>
+                  <form class="post-form">
+                    <div class="form-group">
+                      <label for="post-title">{{post.create_title}}</label>
                       <input type="form-input" class="form-control" id="post-title">
                     </div>
                     <div class="form-group">
-                      <label for="post-desc">{{create_content}}</label>
+                      <label for="post-desc">{{post.create_content}}</label>
                       <textarea class="form-control" id="post-desc"></textarea>
                     </div>
                     <button type="submit" class="btn btn-light border border-dark">Create</button>
@@ -37,7 +37,7 @@
                  <button type="button" class="btn btn-light border border-dark">Update</button>
                  <button type="button" class="btn btn-light border border-dark">Delete</button>
                </div>
-               <div class="card-footer"><small class="text-muted">Created {{format_date post.date_created}} by {{user.username}}</small>
+               <div class="card-footer"><small class="text-muted">Created {{format_date date_created}} by {{user.username}}</small>
               </div>
              </div>
        </div>

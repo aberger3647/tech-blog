@@ -5,7 +5,7 @@ const postFormHandler = async (event) => {
   const description = document.querySelector('#post-desc').value.trim();
 
   if (title && description) {
-    const response = await fetch('/api/posts', {
+    const response = await fetch('/api/posts/', {
       method: 'POST',
       body: JSON.stringify({ title, description }),
       headers: { 'Content-Type': 'application/json' },
@@ -19,6 +19,11 @@ const postFormHandler = async (event) => {
   }
 };
 
+// update post
+
+// delete post
+
 document
   .querySelector('.post-form')
   .addEventListener('submit', postFormHandler);
+console.log(document.querySelector('.post-form'))
