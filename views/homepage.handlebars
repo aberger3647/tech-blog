@@ -4,18 +4,16 @@
     <div class="col-md-8">
       <div class="card border-dark mb-3">
         <div class="card-header">
-          Blog Post
+          {{title}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{title}}</h5>
           <p class="card-text">{{content}}</p>
           <a href="/posts/{{id}}" class="btn btn-light border border-dark">Go to post</a>
         </div>
         <div class="card-footer"><small class="text-muted">Created
-            {{format_date date_created}}</small></div>
+            {{format_date date_created}} by {{user.username}}</small></div>
       </div>
     </div>
   </div>
 </div>
 {{/each}}
-

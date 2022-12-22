@@ -12,11 +12,11 @@
                 <div class="card-body">
                   <form class="post-form">
                     <div class="form-group">
-                      <label for="post-title">{{post.create_title}}</label>
+                      <label for="post-title">Title</label>
                       <input type="form-input" class="form-control" id="post-title">
                     </div>
                     <div class="form-group">
-                      <label for="post-desc">{{post.create_content}}</label>
+                      <label for="post-desc">Content</label>
                       <textarea class="form-control" id="post-desc"></textarea>
                     </div>
                     <button type="submit" class="btn btn-light border border-dark">Create</button>
@@ -27,34 +27,25 @@
 
 <!--existing posts-->
 {{#each posts as |post|}}
-         <div class="col-md-6">
-             <div class="card border-dark mb-3">
-               <div class="card-header">
-                 {{title}}
-               </div>
-               <div class="card-body">
-                {{content}}
-                 <button type="button" class="btn btn-light border border-dark">Update</button>
-                 <button type="button" class="btn btn-light border border-dark">Delete</button>
-               </div>
-               <div class="card-footer"><small class="text-muted">Created {{format_date date_created}} by {{user.username}}</small>
-              </div>
-             </div>
-       </div>
-          </div>
-         </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card border-dark mb-3">
+        <div class="card-header">
+          {{title}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{content}}</p>
+          <a href="/posts/{{id}}" class="btn btn-light border border-dark">Go to post</a>
+        </div>
+        <div class="card-footer"><small class="text-muted">Created
+            {{format_date date_created}} | <a href="#" class="update-post" data-id="{{id}}">Update</a> | <a href="#" class="delete-post" data-id="{{id}}">Delete</a></small></div>
+      </div>
+    </div>
+  </div>
+</div>
          {{/each}}
-
-
- {{!-- {{#if projects.length}}   
-{{#each projects as |project|}}
-  <div class="project-details">
-    <h3>{{name}}</h3>
-    <p>{{description}}</p>
-  </div>
-{{/each}}
-  </div>
-{{/if}} --}}
 
 {{else}}
 <a href="/login">You must login first to view this page</a>

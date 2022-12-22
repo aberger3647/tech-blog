@@ -8,10 +8,8 @@
                </div>
                <div class="card-body">
                 {{content}}
-                <button type="button" class="btn btn-light border border-dark">Update</button>
-                 <button type="button" class="btn btn-light border border-dark">Delete</button>
                </div>
-               <div class="card-footer"><small class="text-muted">Created {{format_date date_created}} by {{user.username}}</small></div>
+               <div class="card-footer"><small class="text-muted">Created {{format_date date_created}} by {{user.username}} | <a href="#" class="update-post" data-id="{{id}}">Update</a> | <a href="#" class="delete-post" data-id="{{id}}">Delete</a> </small></div>
              </div>
        </div>
           </div>
@@ -31,6 +29,7 @@
                       <input type="text" class="form-control" id="comment-name">
                     </div>
                     <div class="form-group">
+                      <label for="comment">Comment</label>
                       <textarea class="form-control" id="comment"></textarea>
                     </div>
                     <button type="submit" class="btn btn-light border border-dark comment-button" id="{{id}}">Submit</button>

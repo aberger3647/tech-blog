@@ -1,3 +1,51 @@
+// update post
+const updatePostHandler = async (event) => {
+  event.preventDefault();
+
+  const title = document.querySelector('#post-title').value.trim();
+  const content = document.querySelector('#post-desc').value.trim();
+
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    const response = await fetch(`api/posts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ title, content }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to update post');
+    }
+  }
+}
+
+document
+  .querySelector('.update-button')
+  .addEventListener('click', updatePostHandler);
+
+// delete post
+const delPostHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    const response = await fetch(`api/posts/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to delete post');
+    }
+  }
+};
+
+document
+  .querySelector('.delete-post')
+  .addEventListener('click', delPostHandler);
+
+// create comment
 const commentFormHandler = async (event) => {
   event.preventDefault();
 
@@ -24,8 +72,7 @@ document
   .querySelector('.comment-form')
   .addEventListener('submit', commentFormHandler);
 
-
-  // delete comment
+ // delete comment
 const delCommentHandler = async (event) => {
     const id = event.target.id;
     const response = await fetch(`/api/comments/${id}`, {
@@ -33,15 +80,13 @@ const delCommentHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.reload();
+      document.location.replace("/dashboard");
     } else {
       alert('Failed to delete comment');
     }
   };
 
-  const deleteComment = document
-    .getElementsByClassName('delete-comment');
-    console.log(deleteComment)
+  const deleteComment = document.getElementsByClassName('delete-comment');
     for (let i = 0; i < deleteComment.length; i++) {
       deleteComment[i].addEventListener('click', delCommentHandler)
     }
