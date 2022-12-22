@@ -24,4 +24,24 @@ document
   .querySelector('.comment-form')
   .addEventListener('submit', commentFormHandler);
 
+
   // delete comment
+const delCommentHandler = async (event) => {
+    const id = event.target.id;
+    const response = await fetch(`/api/comments/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert('Failed to delete comment');
+    }
+  };
+
+  const deleteComment = document
+    .getElementsByClassName('delete-comment');
+    console.log(deleteComment)
+    for (let i = 0; i < deleteComment.length; i++) {
+      deleteComment[i].addEventListener('click', delCommentHandler)
+    }

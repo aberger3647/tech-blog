@@ -15,7 +15,7 @@ router.get('/posts/:id', async (req, res) => {
     });
     const comments = allComments.map((comment) =>
     comment.get({ plain: true }));
-    res.render('post', { ...post, comments, logged_in: req.session.logged_in });
+    res.render('post', { ...post, comments, loggedIn: req.session.logged_in });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       const allPosts = await Post.findAll( { include: [ { model: User }]});
       const posts = allPosts.map((post) =>
       post.get({ plain: true }));
-      res.render('homepage', { posts })
+      res.render('homepage', { posts, loggedIn: req.session.logged_in })
     } catch (err) {
       res.status(400).json(err);
     }
@@ -41,13 +41,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
        include: [{ model: Post }]
     });
     const user = userData.get({ plain: true });
-    console.log(user)
-    res.render('dashboard', { ...user, loggedIn: true });
-
-    // req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   // req.session.logged_in = true;
-    // });
+    res.render('dashboard', { ...user, loggedIn: req.session.logged_in });
 
   } catch (err) {
     res.status(400).json(err);
