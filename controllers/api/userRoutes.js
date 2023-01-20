@@ -6,7 +6,6 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create({
       username: req.body.username,
-      // email: req.body.email,
       password: req.body.password,
     });
 
@@ -56,7 +55,7 @@ router.post('/login', async (req, res) => {
 
 // logout
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });

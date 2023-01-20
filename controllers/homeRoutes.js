@@ -15,7 +15,7 @@ router.get('/posts/:id', async (req, res) => {
     });
     const comments = allComments.map((comment) =>
     comment.get({ plain: true }));
-    res.render('post', { ...post, comments, loggedIn: req.session.logged_in });
+    res.render('post', { ...post, comments, logged_in: req.session.logged_in });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       const allPosts = await Post.findAll( { include: [ { model: User }]});
       const posts = allPosts.map((post) =>
       post.get({ plain: true }));
-      res.render('homepage', { posts, loggedIn: req.session.logged_in })
+      res.render('homepage', { posts, logged_in: req.session.logged_in })
     } catch (err) {
       res.status(400).json(err);
     }
@@ -41,16 +41,39 @@ router.get('/dashboard', withAuth, async (req, res) => {
        include: [{ model: Post }]
     });
     const user = userData.get({ plain: true });
-    res.render('dashboard', { ...user, loggedIn: req.session.logged_in });
+    res.render('dashboard', { ...user, logged_in: req.session.logged_in });
 
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
+// get update page
+router.get('/update/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+    const post = postData.get({ plain: true });
+
+    res.render('update', {
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+
 // login route
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/profile');
     return;
   }

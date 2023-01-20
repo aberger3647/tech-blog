@@ -1,4 +1,4 @@
-{{#if loggedIn}}
+{{#if logged_in}}
 <div class="container">
         <div class="row">
         <div class="col-md-6">
@@ -10,12 +10,12 @@
                   <form class="post-form">
                     <div class="form-group">
                       <label for="post-title">Title</label>
-                      <input type="form-input" class="form-control" id="post-title">
-                      {{title}}
+                      <input type="form-input" class="form-control" id="post-title" value="{{title}}">
+
                     </div>
                     <div class="form-group">
                       <label for="post-desc">Content</label>
-                      <textarea class="form-control" id="post-desc"{{content}}</textarea>
+                      <textarea class="form-control" id="post-desc" value="{{content}}"></textarea>
                     </div>
                     <button type="submit" class="btn btn-light border border-dark update-button" data-id="{{id}}">Update</button>
                   </form>
