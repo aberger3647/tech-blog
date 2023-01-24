@@ -4,7 +4,7 @@
 ![License Badge](https://img.shields.io/badge/license-MIT-blue)
 
 ## Description
-A CMS-style blog site where a user can log in with saved credentials, create blog posts, update, and delete them.
+A CMS style blog site where a user can log in with saved credentials, create blog posts, update, and delete them.
   
 ## Table of Contents
 - [Installation and Usage](#installation)
